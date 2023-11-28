@@ -11,7 +11,7 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
     - name: Deploy to Digital Ocean
-      run: sshpass -p ${{ secrets.SSH_PASSWORD }} rsync -r --quiet $GITHUB_WORKSPACE/ adminbha@134.209.16.92/var/www/nuit-de-l-info-2023-api/
+      run: sshpass -p ${{ secrets.SSH_PASSWORD }} rsync --quiet $GITHUB_WORKSPACE/ adminbha@134.209.16.92/var/www/nuit-de-l-info-2023-api/
 
     - name: Generate application key
       run: php artisan key:generate
