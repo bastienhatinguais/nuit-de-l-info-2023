@@ -1,0 +1,30 @@
+name: Build and Deploy
+on:
+    push:
+        branches:
+            -   main
+
+jobs:
+    build:
+        name: Build and Deploy
+        runs-on: ubuntu-latest
+        steps:
+            -   name: Checkout Repository
+                uses: actions/checkout@master
+            -   name: Setup Environment
+                uses: shivammathur/setup-php@v2
+                with:
+                    php-version: '8.2.12'
+            -   name: Speed up the packages installation process
+                run: composer global require hirak/prestissimo
+            -   name: Install Packages
+                run: composer install --no-dev
+            -   name: Deploy to Server
+                uses: ngocquyhoang/deploy@laravel
+                with:
+                    user: adminbha
+                    host: http://134.209.16.92/
+                    path: /var/www/nuit-de-l-info-2023-api
+                    owner: adminbha
+                env:
+                    DEPLOY_KEY: ${{ secrets.SSH_PASSWORD }}
