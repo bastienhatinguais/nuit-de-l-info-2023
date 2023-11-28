@@ -1,22 +1,87 @@
-name: Déploiement du proket
+name: Deploy to Web Server
 
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - main
 
 jobs:
-  deploiement-laravel:
+  deploy:
+    environment: prod 
     runs-on: ubuntu-latest
-    steps:
-    - name: Checkout repository
+    steps: 
+    - name: Checkout code
       uses: actions/checkout@v2
-    - name: Deploy to Digital Ocean
-      run: sshpass -p ${{ secrets.SSH_PASSWORD }} rsync $GITHUB_WORKSPACE/ adminbha@134.209.16.92/var/www/nuit-de-l-info-2023-api/
-
-    - name: Install dependencies on server
+      
+    - name: Get changed files
+      id: changed-files
+      uses: tj-actions/changed-files@v35
+      with:
+        files: laravel/*
+        since_last_remote_commit: true
+        separator: ","
+        
+    - name: Check if changed files exist
+      id: check-changed-files
       run: |
-        cd /var/www/nuit-de-l-info-2023-api/
-        composer install --no-interaction --prefer-dist --optimize-autoloader
+        if [ "$(echo "${{ steps.changed-files.outputs.all_changed_files }}" | tr -d '[:space:]')" = "" ]; then
+          echo "files-exist=false" >> $GITHUB_ENV
+        else
+          echo "files-exist=true" >> $GITHUB_ENV
+        fi
+          
+    - name: Laravel - copy files to server
+      uses: appleboy/scp-action@master
+      with:
+        host: 134.209.16.92
+        username: adminbha
+        password: ${{ secrets.SSH_PASSWORD }}
+        port: 22
+        source: ${{ steps.changed-files.outputs.all_changed_files }}
+        target: "/var/www/nuit-de-l-info-2023-api/"
+      if: env.FILES_EXIST == 'true'
 
-    - name: Generate application key
-      run: php artisan key:generate
+    - name: Laravel - Deploy back
+      uses: appleboy/ssh-action@v1.0.0
+      with:
+        host: 134.209.16.92
+        username: adminbha
+        password: ${{ secrets.SSH_PASSWORD }}
+        port: 22
+        script: |
+          cd /var/www/nuit-de-l-info-2023-api/laravel
+          cp ~/env/.env ./.env
+          mkdir certs
+          cp ~/certs/ca-certificate.crt ./certs
+          composer install --no-interaction --no-dev --optimize-autoloader
+          sudo chown -R $USER:www-data storage
+          sudo chown -R $USER:www-data bootstrap/cache
+          sudo chmod -R 775 storage
+          sudo chmod -R 775 bootstrap/cache
+          php artisan key:generate
+          php artisan migrate
+          php artisan config:cache
+          php artisan route:cache
+      if: env.FILES_EXIST == 'true'
+      
+    - name: Angular Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '18.18.2'
+
+    - name: Angular - Install dependencies
+      run: cd angular && npm install
+
+    - name: Angular - Build
+      run: cd angular && npm run build --configuration=production
+      
+    - name: Angular - Copy files to server
+      uses: appleboy/scp-action@master
+      with:
+        host: 134.209.16.92
+        username: adminbha
+        password: ${{ secrets.SSH_PASSWORD }}
+        port: 22
+        source: "./angular/dist/angular"  
+        target: "/var/www/nuit-de-l-info-2023/"
+
