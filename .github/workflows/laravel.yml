@@ -1,24 +1,22 @@
-name: Laravel
+name: Déploiement de laravel
 
 on:
   push:
     branches: [ "main" ]
 
 jobs:
-  laravel-tests:
+  deployement-laravel:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout repository
       uses: actions/checkout@v2
     - name: Deploy to Digital Ocean
-      run: sshpass -p ${{ secrets.SSH_PASSWORD }} rsync -r --quiet $GITHUB_WORKSPACE/ adminbha@134.209.16.92/var/www/nuit-de-l-info-2023-api/
-
-    - name: Generate application key
-      run: php artisan key:generate
+      run: sshpass -p ${{ secrets.SSH_PASSWORD }} rsync $GITHUB_WORKSPACE/ adminbha@134.209.16.92/var/www/nuit-de-l-info-2023-api/
 
     - name: Install dependencies on server
       run: |
         cd /var/www/nuit-de-l-info-2023-api/
         composer install --no-interaction --prefer-dist --optimize-autoloader
 
-
+    - name: Generate application key
+      run: php artisan key:generate
