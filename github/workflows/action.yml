@@ -1,26 +1,30 @@
-name: Déploiement de l'appli angular & laravel
-
+name: Build and Deploy
 on:
-  push:
-    branches:
-      - main
+    push:
+        branches:
+            -   main
 
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-
-    - name: Deploy to Digital Ocean
-      run: sshpass -p ${{ secrets.SSH_PASSWORD }} rsync -r --quiet $GITHUB_WORKSPACE/ adminbha@134.209.16.92/var/www/nuit-de-l-info-2023-api/
-
-    - name: Generate application key
-      run: php artisan key:generate
-
-    - name: Install dependencies on server
-      run: |
-        cd /var/www/nuit-de-l-info-2023-api/
-        composer install --no-interaction --prefer-dist --optimize-autoloader
-
+    build:
+        name: Build and Deploy
+        runs-on: ubuntu-latest
+        steps:
+            -   name: Checkout Repository
+                uses: actions/checkout@master
+            -   name: Setup Environment
+                uses: shivammathur/setup-php@v2
+                with:
+                    php-version: '8.2.12'
+            -   name: Speed up the packages installation process
+                run: composer global require hirak/prestissimo
+            -   name: Install Packages
+                run: composer install --no-dev
+            -   name: Deploy to Server
+                uses: ngocquyhoang/deploy@laravel
+                with:
+                    user: adminbha
+                    host: http://134.209.16.92/
+                    path: /var/www/nuit-de-l-info-2023-api
+                    owner: adminbha
+                env:
+                    DEPLOY_KEY: ${{ secrets.SSH_PASSWORD }}
