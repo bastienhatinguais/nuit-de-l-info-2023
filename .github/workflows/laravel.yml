@@ -34,7 +34,7 @@ jobs:
       uses: appleboy/scp-action@master
       with:
         host: 134.209.16.92
-        username: adminbha
+        username: root
         password: ${{ secrets.SSH_PASSWORD }}
         port: 22
         source: ${{ steps.changed-files.outputs.all_changed_files }}
@@ -45,7 +45,7 @@ jobs:
       uses: appleboy/ssh-action@v1.0.0
       with:
         host: 134.209.16.92
-        username: adminbha
+        username: root
         password: ${{ secrets.SSH_PASSWORD }}
         port: 22
         script: |
@@ -79,7 +79,7 @@ jobs:
       uses: appleboy/scp-action@master
       with:
         host: 134.209.16.92
-        username: adminbha
+        username: root
         password: ${{ secrets.SSH_PASSWORD }}
         port: 22
         source: "./angular/dist/angular"  
