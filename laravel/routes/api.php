@@ -20,7 +20,7 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 });
 
 Route::get('/ping', function(Request $request){
-    return "pong";
+    return "super pong";
 });
 
 require __DIR__.'/auth.php';
