@@ -13,23 +13,6 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
       
-    - name: Get changed files
-      id: changed-files
-      uses: tj-actions/changed-files@v35
-      with:
-        files: laravel/*
-        since_last_remote_commit: true
-        separator: ","
-        
-    - name: Check if changed files exist
-      id: check-changed-files
-      run: |
-        if [ "$(echo "${{ steps.changed-files.outputs.all_changed_files }}" | tr -d '[:space:]')" = "" ]; then
-          echo "files-exist=false" >> $GITHUB_ENV
-        else
-          echo "files-exist=true" >> $GITHUB_ENV
-        fi
-          
     - name: Laravel - copy files to server
       uses: appleboy/scp-action@master
       with:
@@ -39,7 +22,6 @@ jobs:
         port: 22
         source: ${{ steps.changed-files.outputs.all_changed_files }}
         target: "/var/www/nuit-de-l-info-2023-api/"
-      if: env.FILES_EXIST == 'true'
 
     - name: Laravel - Deploy back
       uses: appleboy/ssh-action@v1.0.0
@@ -62,7 +44,6 @@ jobs:
           sudo php artisan migrate
           sudo php artisan config:cache
           sudo php artisan route:cache
-      if: env.FILES_EXIST == 'true'
       
     - name: Angular Setup Node.js
       uses: actions/setup-node@v2
