@@ -36,14 +36,14 @@ jobs:
           mkdir ./certs
           cp ~/certs/ca-certificate.crt ./certs/ca-certificate.crt
           composer install --no-interaction --no-dev --optimize-autoloader
-          sudo chown -R $USER:www-data storage
-          sudo chown -R $USER:www-data bootstrap/cache
-          sudo chmod -R 775 storage
-          sudo chmod -R 775 bootstrap/cache
-          sudo php artisan key:generate
-          sudo php artisan migrate
-          sudo php artisan config:cache
-          sudo php artisan route:cache
+          chown -R $USER:www-data storage
+          chown -R $USER:www-data bootstrap/cache
+          chmod -R 775 storage
+          chmod -R 775 bootstrap/cache
+          php artisan key:generate
+          php artisan migrate
+          php artisan config:cache
+          php artisan route:cache
       
     - name: Angular Setup Node.js
       uses: actions/setup-node@v2
