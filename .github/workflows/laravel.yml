@@ -20,7 +20,7 @@ jobs:
         username: root
         password: ${{ secrets.SSH_PASSWORD }}
         port: 22
-        source: ${{ steps.changed-files.outputs.all_changed_files }}
+        source: "./laravel/"
         target: "/var/www/nuit-de-l-info-2023-api/"
 
     - name: Laravel - Deploy back
