@@ -17,7 +17,7 @@ jobs:
       uses: appleboy/scp-action@master
       with:
         host: 134.209.16.92
-        username: root
+        username: adminbha
         password: ${{ secrets.SSH_PASSWORD }}
         port: 22
         source: "./laravel/"
@@ -27,14 +27,13 @@ jobs:
       uses: appleboy/ssh-action@v1.0.0
       with:
         host: 134.209.16.92
-        username: root
+        username: adminbha
         password: ${{ secrets.SSH_PASSWORD }}
         port: 22
         script: |
           cd /var/www/nuit-de-l-info-2023-api/laravel
-          cp /home/adminbha/env/.env ./.env
-          mkdir certs
-          cp /home/adminbha/certs/ca-certificate.crt ./certs
+          cp ~/env/.env ./.env
+          cp ~/certs/ca-certificate.crt ./certs
           composer install --no-interaction --no-dev --optimize-autoloader
           sudo chown -R $USER:www-data storage
           sudo chown -R $USER:www-data bootstrap/cache
@@ -60,7 +59,7 @@ jobs:
       uses: appleboy/scp-action@master
       with:
         host: 134.209.16.92
-        username: root
+        username: adminbha
         password: ${{ secrets.SSH_PASSWORD }}
         port: 22
         source: "./angular/dist/angular"  
