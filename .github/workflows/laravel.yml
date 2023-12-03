@@ -33,7 +33,8 @@ jobs:
         script: |
           cd /var/www/nuit-de-l-info-2023-api/laravel
           cp ~/env/.env ./.env
-          cp ~/certs/ca-certificate.crt ./certs
+          mkdir ./certs
+          cp ~/certs/ca-certificate.crt ./certs/ca-certificate.crt
           composer install --no-interaction --no-dev --optimize-autoloader
           sudo chown -R $USER:www-data storage
           sudo chown -R $USER:www-data bootstrap/cache
