@@ -32,9 +32,9 @@ jobs:
         port: 22
         script: |
           cd /var/www/nuit-de-l-info-2023-api/laravel
-          cp ~/env/.env ./.env
+          cp /home/adminbha/env/.env ./.env
           mkdir certs
-          cp ~/certs/ca-certificate.crt ./certs
+          cp /home/adminbha/certs/ca-certificate.crt ./certs
           composer install --no-interaction --no-dev --optimize-autoloader
           sudo chown -R $USER:www-data storage
           sudo chown -R $USER:www-data bootstrap/cache
