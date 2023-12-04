@@ -1,3 +1,3 @@
 export const environment = {
-  apiUrl: '//localhost:8085/api', // virer le http pour ajouter X-XSRF-TOKEN header aux http request
+  apiUrl: '//api.nuit-de-l-info-2023.duckdns.org/api', // virer le http pour ajouter X-XSRF-TOKEN header aux http request
 };

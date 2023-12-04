@@ -17,10 +17,19 @@ export class LoginComponent {
   public password = '';
 
   onSubmit(f: NgForm) {
+    console.log(f)
     if (f.valid) {
       this.busyLogin = true;
-      this.authService.login$(this.email, this.password).pipe(finalize(() => { this.busyLogin = false })).subscribe(
-      );
+      this.authService.login$(this.email, this.password)
+        .pipe(finalize(() => { this.busyLogin = false }))
+        .subscribe({
+          next: () => {
+            this.router.navigateByUrl('/admin')
+          },
+          error: (error) => {
+            console.log(error)
+          }
+        });
     }
   }
 }

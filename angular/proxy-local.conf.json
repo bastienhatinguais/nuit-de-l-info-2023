@@ -1,6 +1,6 @@
 {
   "/api": {
-    "target": "http://api.nuit-de-l-info-2023.duckdns.fr",
+    "target": "http://localhost:8085",
     "secure": false,
     "pathRewrite": {
       "^/api": "/api"

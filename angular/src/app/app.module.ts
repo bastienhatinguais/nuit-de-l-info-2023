@@ -13,6 +13,7 @@ import { UnauthorizedInterceptor } from './interceptors/unauthorized.interceptor
 import { CommonModule } from '@angular/common';
 import { AdminComponent } from './admin/admin.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { ProfilPipe } from "./pipes/profil.pipe";
 
 @NgModule({
   declarations: [
@@ -20,8 +21,14 @@ import { DashboardComponent } from './admin/dashboard/dashboard.component';
     LoginComponent,
     HomeComponent,
     AdminComponent,
-    DashboardComponent
+    DashboardComponent,
   ],
+  providers: [
+    CookieService,
+    provideHttpClient(withInterceptors([UnauthorizedInterceptor])),
+    ProfilPipe
+  ],
+  bootstrap: [AppComponent],
   imports: [
     CommonModule,
     BrowserModule,
@@ -30,12 +37,7 @@ import { DashboardComponent } from './admin/dashboard/dashboard.component';
     RouterModule,
     HttpClientModule,
     HttpClientXsrfModule,
-  ],
-  providers: [
-    CookieService,
-    provideHttpClient(
-      withInterceptors([UnauthorizedInterceptor])
-    )],
-  bootstrap: [AppComponent],
+    ProfilPipe
+  ]
 })
 export class AppModule { }
