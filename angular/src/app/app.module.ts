@@ -9,11 +9,13 @@ import { LoginComponent } from './index/login/login.component';
 import { HomeComponent } from './index/home/home.component';
 import { HttpClientModule, HttpClientXsrfModule, provideHttpClient, withInterceptors } from '@angular/common/http';
 import { CookieService } from 'ngx-cookie-service';
-import { UnauthorizedInterceptor } from './interceptors/unauthorized.interceptor';
+import { UnauthorizedInterceptor } from './interceptors/unauthorized/unauthorized.interceptor';
 import { CommonModule } from '@angular/common';
 import { AdminComponent } from './admin/admin.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { ProfilPipe } from "./pipes/profil.pipe";
+import { addTokenInterceptor } from './interceptors/add-token/add-token.interceptor';
+import { addHeadersInterceptor } from './interceptors/add-headers/add-headers.interceptor';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,7 @@ import { ProfilPipe } from "./pipes/profil.pipe";
   ],
   providers: [
     CookieService,
-    provideHttpClient(withInterceptors([UnauthorizedInterceptor])),
+    provideHttpClient(withInterceptors([UnauthorizedInterceptor, addTokenInterceptor, addHeadersInterceptor])),
     ProfilPipe
   ],
   bootstrap: [AppComponent],

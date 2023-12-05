@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { User } from '@models/user.model';
 import { UserService } from '@services/user/user.service';
 
 @Component({
@@ -6,9 +7,19 @@ import { UserService } from '@services/user/user.service';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
 })
-export class DashboardComponent {
+export class DashboardComponent implements OnInit {
   constructor(private userService: UserService) { }
+  public user: User;
 
-  public currentUser$ = this.userService.currentUser$();
+  ngOnInit(): void {
+    this.userService.currentUser$().subscribe({
+      next: (user: User) => {
+        this.user = user;
+      },
+      error: (erreur) => {
+        console.log(erreur)
+      }
+    })
+  }
 
 }

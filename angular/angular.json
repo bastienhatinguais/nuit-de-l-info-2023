@@ -91,10 +91,14 @@
             },
             "development": {
               "buildTarget": "angular:build:development"
+            },
+            "local": {
+              "buildTarget": "angular:build:local"
             }
           },
           "defaultConfiguration": "development",
           "options": {
+            "host": "localhost",
             "allowedHosts": [
               "localhost",
               "dev.nuit-de-l-info-2023.duckdns.org"

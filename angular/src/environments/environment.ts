@@ -1,3 +1,4 @@
 export const environment = {
-    apiUrl: ""
+    apiUrl: "",
+    devLocal: false
 };
