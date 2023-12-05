@@ -9,7 +9,8 @@ export const UnauthorizedInterceptor: HttpInterceptorFn = (req, next) => {
   const router = inject(Router);
   return next(req).pipe(catchError(err => {
     if ([0, 401, 403].includes(err.status) && !req.url.includes("logout")) {
-      authService.logout$().pipe(finalize(() => router.navigateByUrl("/login"))).subscribe();
+      authService.logout();
+      router.navigateByUrl("/login");
     }
     const error = err.error?.message || err.statusText;
     return throwError(() => error);

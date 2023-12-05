@@ -17,7 +17,6 @@ export class LoginComponent {
   public password = '';
 
   onSubmit(f: NgForm) {
-    console.log(f)
     if (f.valid) {
       this.busyLogin = true;
       this.authService.login$(this.email, this.password)
