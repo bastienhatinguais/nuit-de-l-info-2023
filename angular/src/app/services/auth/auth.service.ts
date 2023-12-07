@@ -4,25 +4,28 @@ import { TokenResponse } from '@models/token-reponse.model';
 import { ApiService } from '@services/api/api.service';
 import { UserService } from '@services/user/user.service';
 import { CookieService } from 'ngx-cookie-service';
-import { Observable, concatMap, of, switchMap, tap } from 'rxjs';
+import { Observable, concatMap, finalize, of, switchMap, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private apiService: ApiService, private userService: UserService, private cookieService: CookieService, private router: Router) { }
+  constructor(private apiService: ApiService, private router: Router) { }
 
-  public isAuthenticated: boolean = localStorage.getItem("isLoggedIn") != null && localStorage.getItem("isLoggedIn") === "true";
+  // public isAuthenticated: boolean = localStorage.getItem("isLogg²edIn") != null && localStorage.getItem("isLoggedIn") === "true";
+
+  get isAuthenticated() {
+    return localStorage.getItem("token") != null;
+  }
+
 
   public login$(email: string, password: string): Observable<any> {
     return this.apiService.post<TokenResponse>('token', { email, password }).pipe(
-      concatMap((response: TokenResponse) => {
-        return of(response).pipe(
-          tap(() => localStorage.setItem('isLoggedIn', 'true')),
-          tap(() => localStorage.setItem('token', response.access_token))
-        );
-      })
+      tap((response: TokenResponse) => {
+        localStorage.setItem('token', response.access_token);
+      }),
     );
+
   }
 
   public loginSession$(email: string, password: string): Observable<any> {
@@ -35,8 +38,8 @@ export class AuthService {
     );
   }
 
-  public logout$() {
-    return of(() => localStorage.clear());
+  public logout() {
+    localStorage.clear();
   }
 
   public logoutSession$() {
