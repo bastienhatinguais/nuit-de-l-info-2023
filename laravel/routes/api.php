@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\QuizzController;
 use App\Models\NonConformite;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -19,6 +20,10 @@ Route::group(['middleware' => ['api']], function () {
     Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
         return $request->user();
     });
+
+    Route::middleware(['auth:sanctum'])->get('/current-question', [QuizzController::class, 'currentQuestion']);
+    Route::middleware(['auth:sanctum'])->get('/answer-current-question/{id}', [QuizzController::class, 'answerCurrentQuestion']);
+
 });
 
 require __DIR__ . '/auth.php';
