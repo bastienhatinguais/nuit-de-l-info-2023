@@ -6,6 +6,7 @@ import { Role } from './enums/role.enum';
 import { HasRoles } from '@guards/has-roles/has-roles.guard';
 import { AdminComponent } from './admin/admin.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { BravoComponent } from '@pages/bravo/bravo.component';
 
 const routes: Routes = [
   {
@@ -15,6 +16,11 @@ const routes: Routes = [
       { path: '', component: DashboardComponent },
     ],
     canActivate: [HasRoles(Role.ADMIN)],
+  },
+  {
+    path: 'bravo',
+    component: BravoComponent,
+    canActivate: [HasRoles(Role.ADMIN)]
   },
   {
     path: 'login',
