@@ -23,7 +23,7 @@ export class LoginComponent {
         .pipe(finalize(() => { this.busyLogin = false }))
         .subscribe({
           next: () => {
-            this.router.navigateByUrl('/admin')
+            this.router.navigateByUrl('/about')
           },
           error: (error) => {
             console.log(error)
