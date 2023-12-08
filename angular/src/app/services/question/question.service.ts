@@ -14,4 +14,8 @@ export class QuestionService {
   currentQuestion$(): Observable<Question> {
     return this.apiService.get("current-question");
   }
+
+  questions$(): Observable<Question[]>{
+    return this.apiService.get("user/question");
+  }
 }

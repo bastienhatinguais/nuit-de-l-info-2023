@@ -7,4 +7,5 @@ export interface Question {
   reponse_3: string;
   reponse_4: string;
   source: string;
+  bonne_reponse: string | undefined;
 }
