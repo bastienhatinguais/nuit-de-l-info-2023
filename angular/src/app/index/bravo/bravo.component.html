@@ -1,0 +1,24 @@
+<div id="main" class="flex flex-col items-center justify-center bg-gray-600">
+    <p class="text-6xl my-8 text-xanthous font-bold">Bravo ! </p>
+    <div class="max-w-sm rounded-lg overflow-hidden shadow-lg mt-3 mb-8 px-6 pt-3 bg-gray-800">
+        <p class="text-xanthous">score</p>
+        <p class="text-8xl oldstyle-nums text-xanthous mb-10">1500</p>
+    </div>
+    <table class="table-fixed mt-8" class="w-96 mb-10">
+        <thead class="bg-gray-800 text-xanthous">
+            <tr>
+                <th></th>
+                <th class="p-3">Récapitulatif</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let reponse of reponses; let i = index" (click)="onSelectReponse(reponse)">
+                <td class="border bg-gray-200 border-gray-800 p-3 flex items-center justify-center text-gray-1000">{{i+1}}</td>
+                <td class="border bg-gray-200 border-gray-800 p-3 text-gray-1000">{{reponse.question}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div *ngIf="popup">
+        {{selectedReponse.question}}
+    </div>
+</div>
