@@ -6,6 +6,7 @@ import { Role } from './enums/role.enum';
 import { HasRoles } from '@guards/has-roles/has-roles.guard';
 import { AdminComponent } from './admin/admin.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { BravoComponent } from '@pages/bravo/bravo.component';
 import { QuizzComponent } from '@pages/quizz/quizz.component';
 import { AboutComponent } from './about/about.component';
 import { RegisterComponent } from './register/register.component';
@@ -21,6 +22,11 @@ const routes: Routes = [
     canActivate: [HasRoles(Role.ADMIN)],
   },
   {
+    path: 'bravo',
+    component: BravoComponent,
+    canActivate: [HasRoles(Role.ADMIN)]
+  },
+  {
     path: 'login',
     component: LoginComponent,
   },
@@ -33,12 +39,12 @@ const routes: Routes = [
     component: AboutComponent,
   },
   {
-    path: 'questions',
+    path: 'review',
     component: ReviewComponent,
   },
   {
     path: '',
-    component: HomeComponent,
+    component: AboutComponent,
   },
   {
     path: 'register',

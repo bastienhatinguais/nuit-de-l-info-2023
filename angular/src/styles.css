@@ -2,3 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+.background {
+    position: relative;
+    background-repeat: space;
+    background-image: url('../src/assets/img/sapin-de-noel.png');
+    background-size: 60px;
+}

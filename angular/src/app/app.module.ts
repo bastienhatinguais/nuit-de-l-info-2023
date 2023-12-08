@@ -16,6 +16,9 @@ import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { ProfilPipe } from "./pipes/profil.pipe";
 import { addTokenInterceptor } from './interceptors/add-token/add-token.interceptor';
 import { addHeadersInterceptor } from './interceptors/add-headers/add-headers.interceptor';
+import { AboutComponent } from './about/about.component';
+import { QuizzComponent } from '@pages/quizz/quizz.component';
+import { BravoComponent } from '@pages/bravo/bravo.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +27,9 @@ import { addHeadersInterceptor } from './interceptors/add-headers/add-headers.in
     HomeComponent,
     AdminComponent,
     DashboardComponent,
+    AboutComponent,
+    QuizzComponent,
+    BravoComponent
   ],
   providers: [
     CookieService,
