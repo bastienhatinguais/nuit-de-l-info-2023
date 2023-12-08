@@ -1,11 +1,13 @@
-    <div class="flex items-center justify-center h-screen bg-gray-50">
+    <div class="background flex items-center justify-center h-screen bg-gray-50">
         <div class="w-1/2 flex justify-center space-x-6 p-6 rounded-lg bg-gray-800">
             <div class="flex flex-col items-center">
                 <div class="text font-light text-2xl mb-4 text-white">Classement</div>
-                <div class="classement" id="scrollbar6">
-                    <table class="w-full md:w-3/4 lg:w-1/2 text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                <div class="classement rounded-lg" id="scrollbar6">
+                    <table class="w-full md:w-3/4 lg:w-1/2 text-sm text-left rtl:text-right dark:text-gray-400">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-800 dark:text-gray-400">
                             <tr>
+                                <th scope="col" class="px-6 py-3">
+                                </th>
                                 <th scope="col" class="px-6 py-3">
                                     User
                                 </th>
@@ -15,12 +17,17 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let user of users" class="odd:bg-white odd:dark:bg-gray-600 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                            <tr *ngFor="let user of users$ | async" class="odd:bg-white odd:dark:bg-gray-600 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
                                 <td class="px-6 py-4">
-                                    {{ user.id }}
+                                    <div class="relative w-12 h-12">
+                                        <img class="rounded-full border border-gray-100 shadow-sm" src="../../assets/img/avatar.png" alt="user image" />
+                                    </div>
                                 </td>
                                 <td class="px-6 py-4">
-                                    {{ user.username }}
+                                    {{ user.name }}
+                                </td>
+                                <td class="px-6 py-4">
+                                    {{ user.meilleur_score }}
                                 </td>
                             </tr>
                         </tbody>
