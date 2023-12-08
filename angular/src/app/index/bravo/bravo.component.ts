@@ -3,8 +3,6 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-bravo',
-  standalone: true,
-  imports: [CommonModule],
   templateUrl: './bravo.component.html',
   styleUrl: './bravo.component.css'
 })

@@ -11,6 +11,10 @@ module.exports = {
         xanthous: '#ffc145',
         emerald2: '#5dd39e',
         custombeige: '#fff0d4',
+        argent: "#C0C0C0",
+        bronze: "C49C48",
+        or: "#efd807",
+        sapin: "#C3DCB2"
       },
     },
   },

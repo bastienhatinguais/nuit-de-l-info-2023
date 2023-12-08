@@ -18,6 +18,7 @@ import { addTokenInterceptor } from './interceptors/add-token/add-token.intercep
 import { addHeadersInterceptor } from './interceptors/add-headers/add-headers.interceptor';
 import { AboutComponent } from './about/about.component';
 import { QuizzComponent } from '@pages/quizz/quizz.component';
+import { BravoComponent } from '@pages/bravo/bravo.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { QuizzComponent } from '@pages/quizz/quizz.component';
     AdminComponent,
     DashboardComponent,
     AboutComponent,
-    QuizzComponent
+    QuizzComponent,
+    BravoComponent
   ],
   providers: [
     CookieService,
