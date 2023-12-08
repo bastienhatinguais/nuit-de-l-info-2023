@@ -3,7 +3,7 @@
     'bg-red-400': correct === false,
     'bg-white': correct === null
   }">
-    <div id="question" class=" flex items-center justify-center h-screen bg-zinc-50" *ngIf="!displayAnswer">
+    <div id="question" class=" flex items-center justify-center h-screen bg-zinc-50" *ngIf="!displayAnswer" >
         <div class="absolute top-5 right-5 m-4 text-2xl font-light text-gray-900">
             Score : <span class="font-bold text-4xl">{{ answer?.score !== null && answer?.score !== undefined ? answer?.score : 0 }}</span>
         </div>
