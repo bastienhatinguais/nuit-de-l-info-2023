@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AVu;
 use App\Models\Question;
 use App\Models\User;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -111,7 +112,7 @@ class QuizzController extends BaseController
         }
 
         $newQuestion = Question::inRandomOrder()->first();
-
+        AVu::firstOrCreate(["question_id" => $newQuestion->id, "user_id" => $user->id]);
         $user->current_question_id = $newQuestion->id;
         $user->save();
         return $newQuestion->makeHidden(["bonne_reponse"]);
