@@ -43,5 +43,11 @@
   },
   "engines": {
     "node": "18.18.2"
+  },
+  "workspaces": {
+    "nohoist": [
+        "@tailwindcss/forms",
+        "@tailwindcss/forms/**"
+    ]
   }
 }
