@@ -3,38 +3,49 @@
     'bg-red-400': correct === false,
     'bg-white': correct === null
   }">
-    <div id="question" class=" flex items-center justify-center h-screen" *ngIf="!answer">
-        <div
-            class="text-center px-20 block h-2/3 w-3/4 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-            <h5 class="flex justify-center mb-16 mt-8 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                {{question?.intitule}}</h5>
+    <div id="question" class=" flex items-center justify-center h-screen bg-zinc-50" *ngIf="!displayAnswer">
+        <div class="absolute top-5 right-5 m-4 text-2xl font-light text-gray-900">
+            Score : <span class="font-bold text-4xl">{{ answer?.score !== null && answer?.score !== undefined ? answer?.score : 0 }}</span>
+        </div>
+          
+        <div class="text-center px-20 block h-2/3 w-3/4 bg-white border border-gray-200 rounded-lg shadow ">
+            <h1 class="flex justify-center mb-16 mt-8 text-3xl font-bold tracking-tight text-gray-900">
+                {{question?.intitule}}</h1>
             <div class="grid grid-cols-2 gap-10">
                 <div class=" flex-1 justify-center" *ngFor="let reponse of reponses; let index = index">
                     <button
-                        class="text-lg bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white h-24 w-5/6 border border-blue-500 hover:border-transparent rounded"
+                        class="button text-xl bg-transparent hover:bg-xanthous text-xanthous font-semibold hover:text-white h-24 w-5/6 border border-xanthous hover:border-transparent rounded"
                         (click)="validerReponse(index+1)">
                         {{reponse}}
                     </button>
                 </div>
             </div>
+
         </div>
     </div>
 
-    <div id="reponse" class=" flex items-center justify-center h-screen" *ngIf="answer">
-        <div
-            class="text-center px-20 block h-2/3 w-3/4 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-            <h5 class="flex justify-center mb-16 mt-8 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                Réponse
-            </h5>
-            <div>
+    <div id="reponse" class=" flex items-center justify-center h-screen" *ngIf="displayAnswer">
+        <div class="relative text-center px-20 block h-2/3 w-3/4 bg-white border border-gray-200 rounded-lg shadow ">
+            <h1 class="flex justify-center mb-16 mt-8 text-3xl font-bold tracking-tight text-gray-900">
                 {{ reponses[answer.index_reponse-1]}}
-            </div>
-            <div>
+            </h1>
+            <div class="text-2xl">
                 {{question.description}}
             </div>
-            <div>
+            <div class="text-lg absolute bottom-16 italic" >
+                Source : 
                 {{question.source}}
             </div>
+            <button class="absolute bottom-8 right-8 bg-transparent hover:bg-blue-500 rounded"
+                (click)="prochaineQuestion(answer.next_question)">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="absolute bottom-0 right-0 w-20 h-20">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                        d="M12.75 15l3-3m0 0l-3-3m3 3h-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+            </button>
+
         </div>
+
     </div>
 </div>

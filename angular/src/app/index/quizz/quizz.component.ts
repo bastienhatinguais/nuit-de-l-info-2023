@@ -22,6 +22,7 @@ export class QuizzComponent implements OnInit {
   public reponses: string[];
   public answer: Answer;
   public correct: Boolean;
+  public displayAnswer: Boolean;
 
   ngOnInit(): void {
     this.questionService.currentQuestion$().subscribe({
@@ -44,20 +45,38 @@ export class QuizzComponent implements OnInit {
   validerReponse(id: number): void {
     this.answerService.currentAnswer$(id).subscribe({
       next: (answer: Answer) => {
+        console.log('Answer');
         console.log(answer);
-        console.log("Id réponse : "+ id);
-        console.log("Index answer : "+ answer.index_reponse);
+        this.displayAnswer = true;
         this.answer = answer;
-        if(answer.index_reponse==id){
-          console.log("true");
-          this.correct=true;
-        }else{
-          this.correct=false;
+        if (answer.index_reponse == id) {
+          console.log('true');
+          this.correct = true;
+        } else {
+          this.correct = false;
         }
       },
       error: (erreur) => {
         console.log(erreur);
       },
     });
+  }
+
+  prochaineQuestion(question: Question): void {
+    if(question){
+      console.log('Question');
+      console.log(question);
+      this.displayAnswer = false;
+      this.question = question;
+      this.reponses = [
+        question.reponse_1,
+        question.reponse_2,
+        question.reponse_3,
+        question.reponse_4,
+      ];
+    }else{
+      //rediriger vers la route de fin
+    }
+    
   }
 }
