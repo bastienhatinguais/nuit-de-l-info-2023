@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Question;
+use App\Models\User;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
@@ -66,6 +67,17 @@ class QuizzController extends BaseController
     }
 
     /**
+     * Récupère les 10 users avec les meilleurs ranks
+     * @return \LaravelIdea\Helper\App\Models\_IH_User_C|array
+     */
+    public function TopRank()
+    {
+        return User::whereNotNull('meilleur_score')->orderBy('meilleur_score', 'desc')
+            ->take(10)
+            ->get();
+    }
+
+    /**
      * Valide l'index de réponse.
      *
      * @param int|null $index
@@ -104,4 +116,5 @@ class QuizzController extends BaseController
         $user->save();
         return $newQuestion->makeHidden(["bonne_reponse"]);
     }
+
 }
