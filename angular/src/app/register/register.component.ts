@@ -14,17 +14,17 @@ import { RegisterService } from '@services/register/register.service';
   styleUrl: './register.component.css'
 })
 export class RegisterComponent {
-  constructor(private registerService: RegisterService, private router: Router) { }
+  constructor(private registerService: RegisterService, private router: Router) {}
   public busyRegister = false;
   public email = '';
-  public username = '';
+  public name = '';
   public password = '';
   public password_confirmation = '';
 
   onSubmit(f: NgForm) {
     if (f.valid) {
       this.busyRegister = true;
-      this.registerService.register$(this.email, this.password)
+      this.registerService.register$(this.name, this.email, this.password, this.password_confirmation)
         .pipe(finalize(() => { this.busyRegister = false }))
         .subscribe({
           next: () => {
@@ -36,4 +36,5 @@ export class RegisterComponent {
         });
     }
   }
+
 }
