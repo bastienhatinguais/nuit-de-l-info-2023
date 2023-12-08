@@ -1,0 +1,6 @@
+.background {
+    position: relative;
+    background-repeat: space;
+    background-image: url('../../assets/img/sapin-de-noel.png');
+    background-size: 60px;
+}

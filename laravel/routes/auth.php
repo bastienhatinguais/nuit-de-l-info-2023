@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Route;
 
 // CHanger en 'web' pour activer l'authentification par cookie + csrf protection
 Route::group(['middleware' => ['api']], function () {
-    Route::post('/register', [RegisteredUserController::class, 'store'])
+    Route::post('/register', [AuthController::class, 'register'])
         ->name('register');
 
     Route::post('/login', [AuthenticatedSessionController::class, 'store'])
