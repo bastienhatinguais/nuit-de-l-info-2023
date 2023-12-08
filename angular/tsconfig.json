@@ -28,6 +28,7 @@
       "@models/*": ["src/app/models/*"],
       "@assets/*": ["src/assets/*"],
       "@enums/*": ["src/enums/*"],
+      "tslib": ["node_modules/tslib/tslib.d.ts"]
     }
   },
   "angularCompilerOptions": {

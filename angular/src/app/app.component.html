@@ -1,1 +1,12 @@
-<router-outlet></router-outlet>
+<div class="text-center">
+    <button
+        class="absolute left-0 bottom-0 p-5 text-white bg-blue-300 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm  dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+        type="button" data-drawer-target="drawer-right-example" data-drawer-show="drawer-right-example"
+        data-drawer-placement="right" aria-controls="drawer-right-example" data-drawer-hide="drawer-right-example">
+        <img src="assets/img/accessibility.png" class="w-10 h-auto" />
+    </button>
+</div>
+<app-accessibilite-tools (changeConfigEvent)="handleChangeConfig($event)"></app-accessibilite-tools>
+<div [class.dyslexicFont]="isDislexiqueModeActivated">
+    <router-outlet></router-outlet>
+</div>

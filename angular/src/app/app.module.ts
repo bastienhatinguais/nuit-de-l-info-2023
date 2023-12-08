@@ -19,6 +19,7 @@ import { addHeadersInterceptor } from './interceptors/add-headers/add-headers.in
 import { AboutComponent } from './about/about.component';
 import { QuizzComponent } from '@pages/quizz/quizz.component';
 import { BravoComponent } from '@pages/bravo/bravo.component';
+import { AccessibiliteToolsComponent } from './accessibilite-tools/accessibilite-tools.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { BravoComponent } from '@pages/bravo/bravo.component';
     DashboardComponent,
     AboutComponent,
     QuizzComponent,
-    BravoComponent
+    BravoComponent,
+    AccessibiliteToolsComponent
   ],
   providers: [
     CookieService,
@@ -45,7 +47,7 @@ import { BravoComponent } from '@pages/bravo/bravo.component';
     RouterModule,
     HttpClientModule,
     HttpClientXsrfModule,
-    ProfilPipe
+    ProfilPipe,
   ]
 })
 export class AppModule { }
