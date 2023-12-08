@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { initFlowbite } from 'flowbite';
-import { OnInit } from '@angular/core';
-import { initFlowbite } from 'flowbite';
 
 @Component({
   selector: 'app-root',
@@ -23,7 +21,4 @@ export class AppComponent implements OnInit {
     this.isDislexiqueModeActivated = isActivated;
   }
 
-  ngOnInit(): void {
-    initFlowbite();
-  }
 }

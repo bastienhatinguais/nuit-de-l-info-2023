@@ -3,6 +3,8 @@ import { Question } from '@models/question.model';
 import { QuestionService } from '@services/question/question.service';
 import { Answer } from '@models/answer.model';
 import { AnswerService } from '@services/answer/answer.service';
+import { NavigationExtras, Router } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-quizz',
@@ -12,7 +14,9 @@ import { AnswerService } from '@services/answer/answer.service';
 export class QuizzComponent implements OnInit {
   constructor(
     private questionService: QuestionService,
-    private answerService: AnswerService
+    private answerService: AnswerService,
+    private router: Router,
+    private domSanitizer: DomSanitizer
   ) {}
 
   public question: Question;
@@ -20,11 +24,16 @@ export class QuizzComponent implements OnInit {
   public answer: Answer;
   public correct: Boolean;
   public displayAnswer: Boolean;
-
+  public navigationExtras: NavigationExtras = {
+    state:{
+      data: {
+        score: 0
+      }
+    }
+  }
   ngOnInit(): void {
     this.questionService.currentQuestion$().subscribe({
       next: (question: Question) => {
-        console.log(question);
         this.question = question;
         this.reponses = [
           question.reponse_1,
@@ -42,12 +51,12 @@ export class QuizzComponent implements OnInit {
   validerReponse(id: number): void {
     this.answerService.currentAnswer$(id).subscribe({
       next: (answer: Answer) => {
-        console.log('Answer');
-        console.log(answer);
         this.displayAnswer = true;
         this.answer = answer;
+        if(answer.next_question){
+          localStorage.setItem('score', answer.score.toString());
+        }
         if (answer.index_reponse == id) {
-          console.log('true');
           this.correct = true;
         } else {
           this.correct = false;
@@ -60,8 +69,6 @@ export class QuizzComponent implements OnInit {
   }
   prochaineQuestion(question: Question): void {
     if(question){
-      console.log('Question');
-      console.log(question);
       this.displayAnswer = false;
       this.question = question;
       this.reponses = [
@@ -74,5 +81,17 @@ export class QuizzComponent implements OnInit {
       //rediriger vers la route de fin
     }
     
+  }
+  
+  public goToBravo(){
+    this.router.navigate(['/bravo'])
+  }
+
+  public goToHome(){
+    this.router.navigate([''])
+  }
+
+  public sanitize(url: string){
+    return this.domSanitizer.bypassSecurityTrustResourceUrl(url)
   }
 }

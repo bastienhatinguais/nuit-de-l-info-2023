@@ -1,8 +1,13 @@
 <div id="main" class="background flex flex-col h-screen items-center justify-center">
+    <div class="p-5">
+        <button (click)="goToHome()" id="monBtn" class="flex items-center justify-between bg-sapin shadow-lg p-5 font-medium rtl:text-right  text-gray-500 border border-b-0 border-gray-200 rounded-xl focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray dark:hover:bg-gray-800">
+          <img src="assets/img/maison.png" alt="icone" class="flex w-10 h-10" />
+        </button>
+    </div>
     <p class="text-6xl my-8 text-gray-800 font-bold">Bravo ! </p>
     <div class="max-w-sm rounded-lg overflow-hidden shadow-lg mt-3 mb-8 px-6 pt-3 bg-gray-800">
         <p class="text-sapin">Score</p>
-        <p class="text-8xl oldstyle-nums text-sapin mb-10">1500</p>
+        <p class="text-8xl oldstyle-nums text-sapin mb-10">{{score}}</p>
     </div>
     <table class=" rtl:text-right dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-800 dark:text-gray-400">

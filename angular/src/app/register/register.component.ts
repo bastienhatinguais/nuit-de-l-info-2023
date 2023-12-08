@@ -28,7 +28,7 @@ export class RegisterComponent {
         .pipe(finalize(() => { this.busyRegister = false }))
         .subscribe({
           next: () => {
-            this.router.navigateByUrl('/admin')
+            this.router.navigateByUrl('')
           },
           error: (error) => {
             console.log(error)
