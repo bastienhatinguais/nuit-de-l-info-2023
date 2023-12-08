@@ -17,7 +17,7 @@ export class QuizzComponent implements OnInit {
     private answerService: AnswerService,
     private router: Router,
     private domSanitizer: DomSanitizer
-  ) {}
+  ) { }
 
   public question: Question;
   public reponses: string[];
@@ -42,7 +42,7 @@ export class QuizzComponent implements OnInit {
           question.reponse_4,
         ];
       },
-      error: (erreur) => {
+      error: (erreur: any) => {
         console.log(erreur);
       },
     });
@@ -62,13 +62,13 @@ export class QuizzComponent implements OnInit {
           this.correct = false;
         }
       },
-      error: (erreur) => {
+      error: (erreur: any) => {
         console.log(erreur);
       },
     });
   }
   prochaineQuestion(question: Question): void {
-    if(question){
+    if (question) {
       this.displayAnswer = false;
       this.question = question;
       this.reponses = [
@@ -77,10 +77,10 @@ export class QuizzComponent implements OnInit {
         question.reponse_3,
         question.reponse_4,
       ];
-    }else{
+    } else {
       //rediriger vers la route de fin
     }
-    
+
   }
   
   public goToBravo(){

@@ -17,6 +17,8 @@ class AVu extends Model
 {
     protected $table = 'a_vu';
 
+    public $timestamps = false;
+
     protected $fillable = [
         'question_id',
         'user_id',

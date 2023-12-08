@@ -20,6 +20,8 @@ import { AboutComponent } from './about/about.component';
 import { QuizzComponent } from '@pages/quizz/quizz.component';
 import { BravoComponent } from '@pages/bravo/bravo.component';
 import { AccessibiliteToolsComponent } from './accessibilite-tools/accessibilite-tools.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,7 @@ import { AccessibiliteToolsComponent } from './accessibilite-tools/accessibilite
     AboutComponent,
     QuizzComponent,
     BravoComponent,
-    AccessibiliteToolsComponent
+    AccessibiliteToolsComponent,
   ],
   providers: [
     CookieService,
@@ -48,6 +50,8 @@ import { AccessibiliteToolsComponent } from './accessibilite-tools/accessibilite
     HttpClientModule,
     HttpClientXsrfModule,
     ProfilPipe,
+    BrowserAnimationsModule,
+    MatSnackBarModule
   ]
 })
 export class AppModule { }
