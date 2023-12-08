@@ -10,7 +10,7 @@ module.exports = {
         blackbean: '#301014',
         xanthous: '#ffc145',
         emerald2: '#5dd39e',
-        custombeige: '#fff0d4'
+        custombeige: '#fff0d4',
       },
     },
   },
