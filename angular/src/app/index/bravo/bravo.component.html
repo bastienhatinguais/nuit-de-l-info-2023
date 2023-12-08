@@ -1,24 +1,36 @@
-<div id="main" class="background flex-col items-center justify-center bg-gray-600">
-    <p class="text-6xl my-8 text-xanthous font-bold">Bravo ! </p>
+<div id="main" class="background flex flex-col h-screen items-center justify-center">
+    <p class="text-6xl my-8 text-gray-800 font-bold">Bravo ! </p>
     <div class="max-w-sm rounded-lg overflow-hidden shadow-lg mt-3 mb-8 px-6 pt-3 bg-gray-800">
-        <p class="text-xanthous">score</p>
+        <p class="text-xanthous">Score</p>
         <p class="text-8xl oldstyle-nums text-xanthous mb-10">1500</p>
     </div>
-    <table class="table-fixed mt-8" class="w-96 mb-10">
-        <thead class="bg-gray-800 text-xanthous">
+    <table class=" rtl:text-right dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-800 dark:text-gray-400">
             <tr>
-                <th></th>
-                <th class="p-3">Récapitulatif</th>
+                <th scope="col" class="px-6 py-3">
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    User
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Score
+                </th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let reponse of reponses; let i = index" (click)="onSelectReponse(reponse)">
-                <td class="border bg-gray-200 border-gray-800 p-3 flex items-center justify-center text-gray-1000">{{i+1}}</td>
-                <td class="border bg-gray-200 border-gray-800 p-3 text-gray-1000">{{reponse.question}}</td>
+            <tr *ngFor="let user of users$ | async" class="odd:bg-white odd:dark:bg-gray-600 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                <td class="px-6 py-4">
+                    <div class="relative w-12 h-12">
+                        <img class="rounded-full border border-gray-100 shadow-sm" src="../../assets/img/avatar.png" alt="user image" />
+                    </div>
+                </td>
+                <td class="px-6 py-4">
+                    {{ user.name }}
+                </td>
+                <td class="px-6 py-4">
+                    {{ user.meilleur_score }}
+                </td>
             </tr>
         </tbody>
     </table>
-    <div *ngIf="popup">
-        {{selectedReponse.question}}
-    </div>
 </div>

@@ -19,6 +19,5 @@ export class AboutComponent {
 
   ngOnInit() {
     this.users$ = this.leaderboardService.leaderboard$()
-    console.log(this.leaderboardService.leaderboard$())
   }
 }
