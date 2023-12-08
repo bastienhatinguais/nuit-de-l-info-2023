@@ -1,12 +1,12 @@
 
-<div class="flex items-center justify-center h-screen background">
+<div class="flex items-center justify-center background">
   <div class="p-5 left-3 top-3" style="position: absolute;">
       <button (click)="goToHome()" id="monBtn" class="flex items-center justify-between bg-sapin shadow-lg p-5 font-medium rtl:text-right  text-gray-500 border border-b-0 border-gray-200 rounded-xl focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray dark:hover:bg-gray-800">
         <img src="assets/img/maison.png" alt="icone" class="flex w-10 h-10" />
       </button>
   </div>
-  <div class="grid grid-cols-4 gap-4">
-    <div *ngFor="let question of questions" class="max-w-sm p-6 m-6 border-8 border-sapin rounded-lg shadow-lg">
+  <div class="grid grid-cols-2 gap-10">
+    <div *ngFor="let question of questions" class="max-w-sm p-6 m-6 border-8 border-sapin bg-white rounded-lg shadow-lg">
       <h5 class="mb-2 text-2xl font-bold tracking-tight text-blackbean dark:text-white">{{question.intitule}}</h5>
       <p *ngIf="question.bonne_reponse == '1'" class="mb-3 text-xl font-bold text-sapin dark:text-gray-400">La Réponse est : {{ question.reponse_1 }}</p>
       <p *ngIf="question.bonne_reponse == '2'" class="mb-3 text-xl font-bold text-sapin dark:text-gray-400">La Réponse est : {{ question.reponse_2 }}</p>

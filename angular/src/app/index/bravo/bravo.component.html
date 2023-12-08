@@ -1,5 +1,5 @@
 <div id="main" class="background flex flex-col h-screen items-center justify-center">
-    <div class="p-5">
+    <div class="p-5 left-3 top-3" style="position: absolute;">
         <button (click)="goToHome()" id="monBtn" class="flex items-center justify-between bg-sapin shadow-lg p-5 font-medium rtl:text-right  text-gray-500 border border-b-0 border-gray-200 rounded-xl focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray dark:hover:bg-gray-800">
           <img src="assets/img/maison.png" alt="icone" class="flex w-10 h-10" />
         </button>
@@ -9,33 +9,35 @@
         <p class="text-sapin">Score</p>
         <p class="text-8xl oldstyle-nums text-sapin mb-10">{{score}}</p>
     </div>
-    <table class=" rtl:text-right dark:text-gray-400">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-800 dark:text-gray-400">
-            <tr>
-                <th scope="col" class="px-6 py-3">
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    User
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Score
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let user of users$ | async" class="odd:bg-white odd:dark:bg-gray-600 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-                <td class="px-6 py-4">
-                    <div class="relative w-12 h-12">
-                        <img class="rounded-full border border-gray-100 shadow-sm" src="../../assets/img/avatar.png" alt="user image" />
-                    </div>
-                </td>
-                <td class="px-6 py-4">
-                    {{ user.name }}
-                </td>
-                <td class="px-6 py-4">
-                    {{ user.meilleur_score }}
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="classement rounded-lg" id="scrollbar6">
+        <table class=" rtl:text-right dark:text-gray-400">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-800 dark:text-gray-400">
+                <tr>
+                    <th scope="col" class="px-6 py-3">
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        User
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Score
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of users$ | async" class="odd:bg-white odd:dark:bg-gray-600 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                    <td class="px-6 py-4">
+                        <div class="relative w-12 h-12">
+                            <img class="rounded-full border border-gray-100 shadow-sm" src="../../assets/img/avatar.png" alt="user image" />
+                        </div>
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ user.name }}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ user.meilleur_score }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
