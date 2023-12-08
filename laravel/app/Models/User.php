@@ -4,6 +4,8 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -29,6 +31,10 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'current_question_id',
+        'nbr_answered_questions',
+        "current_score",
+        "meilleur_score",
     ];
 
     /**
@@ -50,4 +56,21 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function getCurrentQuestion(): BelongsTo
+    {
+        return $this->belongsTo(Question::class, 'current_question_id', 'id');
+    }
+
+    public function questionsSeen(): HasManyThrough
+    {
+        return $this->hasManyThrough(
+            Question::class,
+            AVu::class,
+            'user_id', // Clé étrangère de la table intermédiaire
+            'id', // Clé primaire de la table utilisateur
+            'id', // Clé primaire de la table question
+            'question_id' // Clé étrangère de la table intermédiaire
+        );
+    }
 }
