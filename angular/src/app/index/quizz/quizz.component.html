@@ -10,7 +10,7 @@
         <div class="grid grid-cols-2 gap-10">
             <div class=" flex-1 justify-center" *ngFor="let reponse of reponses; let index = index">
                 <button
-                    class="button text-xl bg-transparent hover:bg-xanthous text-xanthous font-semibold hover:text-white h-24 w-5/6 border border-xanthous hover:border-transparent rounded"
+                    class="button text-xl bg-transparent hover:bg-sapin text-sapin font-semibold hover:text-white h-24 w-5/6 border border-sapin hover:border-transparent rounded"
                     (click)="validerReponse(index+1)">
                     {{reponse}}
                 </button>
@@ -21,7 +21,7 @@
 </div>
 
 <div id="reponse" class=" flex items-center justify-center h-screen" *ngIf="displayAnswer" [ngClass]="{
-        'bg-green-400': correct === true,
+        'bg-sapinfonce': correct === true,
         'bg-red-400': correct === false,
         'bg-white': correct === null
       }">
@@ -36,7 +36,7 @@
             Source :
             {{question.source}}
         </div>
-        <button class="absolute bottom-8 right-8 bg-transparent hover:bg-blue-500 rounded"
+        <button class="absolute bottom-8 right-8 bg-transparent hover:bg-sapinfonce rounded"
             (click)="prochaineQuestion(answer.next_question)" *ngIf="answer.next_question">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="absolute bottom-0 right-0 w-20 h-20">
@@ -44,7 +44,7 @@
                     d="M12.75 15l3-3m0 0l-3-3m3 3h-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
         </button>
-        <button routerLink="/bravo" class="absolute bottom-8 right-8 bg-transparent hover:bg-blue-500 rounded"
+        <button routerLink="/bravo" class="absolute bottom-8 right-8 bg-transparent hover:bg-sapinfonce rounded"
             *ngIf="!answer.next_question">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="absolute bottom-0 right-0 w-20 h-20">

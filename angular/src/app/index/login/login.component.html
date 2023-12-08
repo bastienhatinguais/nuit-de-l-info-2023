@@ -6,7 +6,7 @@
         <div class="mt-2">
           <input id="email" name="email" type="email" autocomplete="email" [(ngModel)]="email" #emailInput="ngModel"
             required
-            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sapin sm:text-sm sm:leading-6" />
           <small *ngIf="f.submitted && emailInput.errors?.['required']" class="text-red-600 font-bold">Veuillez
             renseigner votre
             email.</small>
@@ -17,19 +17,19 @@
         <div class="flex items-center justify-between">
           <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Mot de passe</label>
           <div class="text-sm">
-            <a href="#" class="font-semibold text-indigo-600 hover:text-indigo-500">Mot de passe oublié ?</a>
+            <a href="#" class="font-semibold text-sapin hover:text-sapinfonce">Mot de passe oublié ?</a>
           </div>
         </div>
         <div class="mt-2">
           <input id="password" name="password" type="password" autocomplete="current-password" [(ngModel)]="password"
             required
-            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />
+            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-sapin sm:text-sm sm:leading-6" />
         </div>
       </div>
 
       <div class="flex justify-center ">
         <button [disabled]="busyLogin" type="submit"
-          class="inline-flex items-center px-4 py-2 font-semibold leading-6 text-sm shadow rounded-md text-white bg-indigo-500 hover:bg-indigo-400 transition ease-in-out duration-150">
+          class="inline-flex items-center px-4 py-2 font-semibold leading-6 text-sm shadow rounded-md text-white bg-sapin hover:bg-sapinfonce transition ease-in-out duration-150">
           <svg *ngIf="busyLogin" class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg"
             fill="none" viewBox="0 0 24 24">
             <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
@@ -40,7 +40,7 @@
           Se connecter
         </button>
         <button [disabled]="busyLogin" type="submit" routerLink="/register"
-        class="inline-flex items-center px-4 py-2 ml-5 font-semibold leading-6 text-sm shadow rounded-md text-white bg-indigo-500 hover:bg-indigo-400 transition ease-in-out duration-150">
+        class="inline-flex items-center px-4 py-2 ml-5 font-semibold leading-6 text-sm shadow rounded-md text-white bg-sapin hover:bg-sapinfonce transition ease-in-out duration-150">
         S'inscrire
         </button>
       </div>

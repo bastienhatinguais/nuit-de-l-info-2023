@@ -15,7 +15,8 @@ module.exports = {
         argent: "#C0C0C0",
         bronze: "C49C48",
         or: "#efd807",
-        sapin: "#C3DCB2"
+        sapin: "#C3DCB2",
+        sapinfonce: "#577a3e"
       },
     },
   },

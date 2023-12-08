@@ -1,17 +1,17 @@
-<button id="monBtn" class="flex items-center justify-between bg-emerald2 shadow-lg p-5 font-medium rtl:text-right  text-gray-500 border border-b-0 border-gray-200 rounded-xl focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray dark:hover:bg-gray-800">
+<button routerLink="/about" id="monBtn" class="flex items-center justify-between bg-sapin shadow-lg p-5 font-medium rtl:text-right  text-gray-500 border border-b-0 border-gray-200 rounded-xl focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray dark:hover:bg-gray-800">
   <img src="assets/img/maison.png" alt="icone" class="flex w-10 h-10" />
 </button>
 
 <div class="grid grid-cols-4 gap-4">
-<div *ngFor="let question of questions" class="max-w-sm p-6 m-6 border-8 border-custombeige rounded-lg shadow-lg">
+<div *ngFor="let question of questions" class="max-w-sm p-6 m-6 border-8 border-sapin rounded-lg shadow-lg">
   <h5 class="mb-2 text-2xl font-bold tracking-tight text-blackbean dark:text-white">{{question.intitule}}</h5>
-  <p *ngIf="question.bonne_reponse == '1'" class="mb-3 text-xl font-bold text-emerald2 dark:text-gray-400">La Réponse est : {{ question.reponse_1 }}</p>
-  <p *ngIf="question.bonne_reponse == '2'" class="mb-3 text-xl font-bold text-emerald2 dark:text-gray-400">La Réponse est : {{ question.reponse_2 }}</p>
-  <p *ngIf="question.bonne_reponse == '3'" class="mb-3 text-xl font-bold text-emerald2 dark:text-gray-400">La Réponse est : {{ question.reponse_3 }}</p>
-  <p *ngIf="question.bonne_reponse == '4'" class="mb-3 text-xl font-bold text-emerald2 dark:text-gray-400">La Réponse est : {{ question.reponse_4 }}</p>
+  <p *ngIf="question.bonne_reponse == '1'" class="mb-3 text-xl font-bold text-sapin dark:text-gray-400">La Réponse est : {{ question.reponse_1 }}</p>
+  <p *ngIf="question.bonne_reponse == '2'" class="mb-3 text-xl font-bold text-sapin dark:text-gray-400">La Réponse est : {{ question.reponse_2 }}</p>
+  <p *ngIf="question.bonne_reponse == '3'" class="mb-3 text-xl font-bold text-sapin dark:text-gray-400">La Réponse est : {{ question.reponse_3 }}</p>
+  <p *ngIf="question.bonne_reponse == '4'" class="mb-3 text-xl font-bold text-sapin dark:text-gray-400">La Réponse est : {{ question.reponse_4 }}</p>
 
   <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{question.description}}</p>
-  <a attr.href="{{question.source}}" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-xanthous rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+  <a attr.href="{{question.source}}" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-sapin rounded-lg hover:bg-sapinfonce focus:ring-4 focus:outline-none focus:ring-sapin ">
       En savoir plus
       <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
