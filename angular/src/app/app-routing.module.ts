@@ -6,6 +6,8 @@ import { Role } from './enums/role.enum';
 import { HasRoles } from '@guards/has-roles/has-roles.guard';
 import { AdminComponent } from './admin/admin.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { ReviewComponent } from './index/review/review.component';
+
 
 const routes: Routes = [
   {
@@ -19,6 +21,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+  },
+  {
+    path: 'questions',
+    component: ReviewComponent,
   },
   {
     path: '',
