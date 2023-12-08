@@ -58,7 +58,6 @@ export class QuizzComponent implements OnInit {
       },
     });
   }
-
   prochaineQuestion(question: Question): void {
     if(question){
       console.log('Question');
