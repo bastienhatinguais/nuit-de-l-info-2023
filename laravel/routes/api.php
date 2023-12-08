@@ -25,6 +25,7 @@ Route::group(['middleware' => ['api']], function () {
     Route::middleware(['auth:sanctum'])->get('/current-question', [QuizzController::class, 'currentQuestion']);
     Route::middleware(['auth:sanctum'])->get('/answer-current-question/{id}', [QuizzController::class, 'answerCurrentQuestion']);
     Route::middleware(['auth:sanctum'])->get('/user/question', [UserController::class, 'GetQuestionsSeenOfUser']);
+    Route::middleware(['auth:sanctum'])->get('/top-rank', [QuizzController::class, 'TopRank']);
 
 });
 
