@@ -7,8 +7,6 @@ import { LeaderboardUser } from '@models/leaderboard_user.model';
 
 @Component({
   selector: 'app-about',
-  standalone: true,
-  imports: [CommonModule],
   templateUrl: './about.component.html',
   styleUrl: './about.component.css'
 })

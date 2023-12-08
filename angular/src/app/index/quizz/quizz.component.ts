@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { Question } from '@models/question.model';
 import { QuestionService } from '@services/question/question.service';
 import { Answer } from '@models/answer.model';
@@ -7,8 +6,6 @@ import { AnswerService } from '@services/answer/answer.service';
 
 @Component({
   selector: 'app-quizz',
-  standalone: true,
-  imports: [CommonModule],
   templateUrl: './quizz.component.html',
   styleUrl: './quizz.component.css',
 })

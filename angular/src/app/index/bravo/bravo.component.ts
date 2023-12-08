@@ -6,8 +6,6 @@ import { LeaderboardService } from '@services/leaderboard/leaderboard.service';
 
 @Component({
   selector: 'app-bravo',
-  standalone: true,
-  imports: [CommonModule],
   templateUrl: './bravo.component.html',
   styleUrl: './bravo.component.css'
 })
