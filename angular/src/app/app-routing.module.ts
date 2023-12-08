@@ -6,6 +6,7 @@ import { Role } from './enums/role.enum';
 import { HasRoles } from '@guards/has-roles/has-roles.guard';
 import { AdminComponent } from './admin/admin.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { QuizzComponent } from '@pages/quizz/quizz.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+  },
+  {
+    path: 'quizz',
+    component: QuizzComponent,
   },
   {
     path: '',
